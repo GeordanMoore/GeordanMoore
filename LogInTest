@@ -1,0 +1,122 @@
+using System;
+
+class MainClass 
+{
+  public static void Main (string[] args)
+  {
+    Login();
+  }
+  
+  public static void Login() 
+  {
+    string username = "";
+    string password = "";
+    string email = "";
+    string answer ="";
+
+    Console.WriteLine("Please enter a username");
+    username = GetInput(username);
+    Console.WriteLine(" ");
+    Console.WriteLine("Please enter a password");
+    password = GetInput(password);
+    Console.WriteLine(" ");
+    Console.WriteLine("Please enter an email");
+    email = GetInput(email);
+    Console.WriteLine(" ");
+    
+    Console.WriteLine("Are your logn credentials correct? Please answer yes or no.");
+    answer = GetInput(answer);
+
+    while(answer == "no")
+    {
+    Apology();
+    Console.WriteLine("Please enter a username");
+    username = GetInput(username);
+    Console.WriteLine(" ");
+    Console.WriteLine("Please enter a password");
+    password = GetInput(password);
+    Console.WriteLine(" ");
+    Console.WriteLine("Please enter an email");
+    email = GetInput(email);
+    Console.WriteLine(" ");
+    
+    Console.WriteLine("Are your logn credentials correct? Please answer yes or no.");
+    answer = GetInput(answer);
+    }
+
+    if(answer == "yes")
+    {
+      Welcome();
+    }
+
+    string checkusername = username;
+    string checkpassword = password;
+    string checkemail = email;
+    int attempts = 5;
+
+    Log();
+    Console.WriteLine("Please enter a username");
+    username = GetInput(username);
+    Console.WriteLine(" ");
+    Console.WriteLine("Please enter a password");
+    password = GetInput(password);
+    Console.WriteLine(" ");
+    Console.WriteLine("Please enter an email");
+    email = GetInput(email);
+    Console.WriteLine(" ");
+
+    while(username != checkusername || password != checkpassword || email != checkemail)
+    {
+      attempts -= 1;
+      Console.WriteLine("The login is incorrect. You have " + attempts + " attempts left" );
+      Console.WriteLine(" ");
+      Console.WriteLine("Please enter a username");
+      username = GetInput(username);
+      Console.WriteLine(" ");
+      Console.WriteLine("Please enter a password");
+      password = GetInput(password);
+      Console.WriteLine(" ");
+      Console.WriteLine("Please enter an email");
+      email = GetInput(email);
+      Console.WriteLine(" ");
+
+      if(attempts == 0)
+      {
+        Console.WriteLine("You have run out of login attempts");
+        break;
+      }
+    }
+
+    Console.WriteLine("Login successful");
+
+  }
+
+  public static string GetInput(string val)
+  {
+    val = Console.ReadLine();
+    return val;
+  }
+  
+  public static void Welcome()
+  {
+    Console.WriteLine(" ");
+    Console.WriteLine("Thank you for creating an account");
+    Console.WriteLine("");
+  }
+
+  public static void Apology()
+  {
+    Console.WriteLine("");
+    Console.WriteLine("We are very sorry");
+    Console.WriteLine("");
+  }
+
+  public static void Log()
+  {
+    Console.WriteLine("In order make sure everything is ok, please login");
+    Console.WriteLine(" ");
+  }
+
+
+}
+
